@@ -2,6 +2,8 @@ var winston = require("winston");
 var express = require('express');
 var bodyParser = require("body-parser");
 
+var env = require("./app_env");
+
 var app = express();
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -10,31 +12,18 @@ app.use(function(req, res, next) {
   next();
 });
 
+winston.level = process.env.LOG_LEVEL || "info";
 
-var db = require("./models");
-
-function createEvent(params) {
-  return db.event.create({
-    device_name: params.device.name,
-    device_id: params.device.id,
-    duration: params.duration,
-    connection: params.connection,
-    file: params.file,
-    host: params.host,
-    size: params.size,
-    meta: params.meta,
-    signal: params.signal
+if(env === "production") {
+  winston.remove(winston.transports.Console);
+  winston.add(winston.transports.DailyRotateFile, {
+    level: "info",
+    filename: "log/app.log",
+    json: false
   });
 }
 
-app.post("/event", function(req, res) {
-  createEvent(req.body).then(function(event) {
-    res.status(201).json(event);
-  }, function(error) {
-    winston.error("Unexpected error when saving event to database: %s", error);
-    res.status(500).json({message: "Unknown error"});
-  });
-});
+require("./routes/event").draw(app);
 
 var PORT = process.env.PORT || 3000;
 var server = app.listen(PORT, function() {

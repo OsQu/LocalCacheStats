@@ -4,9 +4,11 @@ var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
 var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || "development";
+var env       = require("../app_env");
 var config    = require(__dirname + '/../config/config.json')[env];
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
+var _         = require("underscore");
+var winston   = require("winston");
+var sequelize = new Sequelize(config.database, config.username, config.password, _.extend({logging: winston.debug}, config));
 var db        = {};
 
 fs

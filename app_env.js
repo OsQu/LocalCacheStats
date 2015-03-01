@@ -1,3 +1,3 @@
-var env = process.env.APP_ENV || "production";
+var env = process.env.NODE_ENV || "production";
 module.exports = env;
 
