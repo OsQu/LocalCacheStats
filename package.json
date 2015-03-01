@@ -2,9 +2,10 @@
   "name": "LocalCacheStats",
   "version": "0.0.1",
   "description": "Stats gathering service for LocalCache project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start_dev": "env $(cat development.env) node app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/OsQu/LocalCacheStats/issues"
   },
-  "homepage": "https://github.com/OsQu/LocalCacheStats"
+  "homepage": "https://github.com/OsQu/LocalCacheStats",
+  "dependencies": {
+    "express": "^4.12.0",
+    "pg": "^4.3.0",
+    "pg-hstore": "^2.3.1",
+    "sequelize": "^2.0.3",
+    "sequelize-cli": "^1.3.1",
+    "winston": "^0.9.0"
+  }
 }
