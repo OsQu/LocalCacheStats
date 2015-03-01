@@ -1,13 +1,11 @@
 var Sequelize = require("sequelize");
+var fs = require("fs");
+var appEnv = require("./app_env");
 
-var DB_USER = process.env.DB_USER;
-var DB_PWD = process.env.DB_PWD;
+/*jslint stupid:true */
+var dbConfig = JSON.parse(fs.readFileSync("config/config.json"))[appEnv];
 
-if(!DB_USER) {
-  throw new Error("DB_USER environment variable is not set");
-}
-
-var db = new Sequelize('local_cache_stats', DB_USER, DB_PWD, {
+var db = new Sequelize('local_cache_stats', dbConfig.username, dbConfig.password, {
   host: "localhost",
   dialect: "postgres",
   pool: {
