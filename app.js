@@ -1,13 +1,22 @@
-var express = require('express');
-var app = express();
 var winston = require("winston");
+var express = require('express');
+var bodyParser = require("body-parser");
 
-var db = require("./db");
+var app = express();
+app.use(bodyParser.json());
+app.use(function(req, res, next) {
+  winston.info("Processing %s %s from %s", req.method, req.path, req.ip);
+  winston.info("Parameters:", req.body);
+  next();
+});
+
+
+var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
 app.post("/event", function(req, res) {
-  db.query("SELECT * FROM events;");
+  db.sequelize.query("SELECT * FROM events;");
   res.send("Hello world");
 });
 
