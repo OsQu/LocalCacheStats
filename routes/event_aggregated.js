@@ -4,7 +4,7 @@ var db = require("../models/index.js");
 module.exports = function(req, res) {
   json = {
     "HS": {},
-    "cache": {},
+    "CACHE": {},
   }
 
   Promise.all([
@@ -13,10 +13,10 @@ module.exports = function(req, res) {
     numberOfFiles("HS", json),
     averageFileSize("HS", json),
 
-    avg("cache", json),
-    numberOfReports("cache", json),
-    numberOfFiles("cache", json),
-    averageFileSize("cache", json)
+    avg("CACHE", json),
+    numberOfReports("CACHE", json),
+    numberOfFiles("CACHE", json),
+    averageFileSize("CACHE", json)
   ]).then(function() {
     res.status(200).json(json);
   });
