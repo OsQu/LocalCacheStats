@@ -4,24 +4,30 @@ var EVENTS_URL = "http://188.166.59.119/event"
 
 $(function() {
   google.load('visualization', '1.1', {packages: ['scatter']});
-  google.setOnLoadCallback(renderGoogleCharts);
+  google.setOnLoadCallback(renderEventCharts);
   $.get(DATA_URL).then(function(response) {
     var renderer = new Renderer("hs", response["HS"]);
     renderer.render();
 
     renderer = new Renderer("cache", response["CACHE"]);
     renderer.render();
-
-    console.log(response);
   });
 
-  function renderGoogleCharts() {
+  function renderEventCharts() {
     $.get(EVENTS_URL).then(function(response) {
-      var chart = new TimeSizeChart("hs-time-filesize", eventsFor("HS", response))
+      hsEvents = eventsFor("HS", response);
+      var chart = new TimeSizeChart("hs-time-filesize",  hsEvents)
       chart.render();
 
-      chart = new TimeSizeChart("cache-time-filesize", eventsFor("CACHE", response));
+      var table = new EventsTable("#hs-files", hsEvents);
+      table.render();
+
+      cacheEvents = eventsFor("CACHE", response);
+      chart = new TimeSizeChart("cache-time-filesize", cacheEvents);
       chart.render();
+
+      table = new EventsTable("#cache-files", cacheEvents);
+      table.render();
     });
   }
 })

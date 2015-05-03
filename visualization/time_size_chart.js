@@ -21,7 +21,6 @@ TimeSizeChart.prototype.render = function() {
     vAxis: { title: "Time in ms" }
   }
 
-  console.log(document.getElementById(this.selector));
   var chart = new google.charts.Scatter(document.getElementById(this.selector));
   chart.draw(data, google.charts.Scatter.convertOptions(options));
 }

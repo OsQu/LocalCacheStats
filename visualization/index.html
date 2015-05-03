@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-
   </head>
   <body>
     <div class="container" role="main">
@@ -44,8 +43,32 @@
       </div>
       <div class="row">
         <div class="col-md-2"><h4>Files</h4></div>
-        <div class="col-md-5 text-center"><span id="hs-files"></span></div>
-        <div class="col-md-5 text-center"><span id="cache-files"></span></div>
+        <div class="col-md-5 text-center">
+          <table id="hs-files" class="table table-striped">
+            <thead>
+              <tr>
+                <th>File name</th>
+                <th>Duration</th>
+                <th>Size</th>
+                <th>Client</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="col-md-5 text-center">
+          <table id="cache-files" class="table table-striped">
+            <thead>
+              <tr>
+                <th>File name</th>
+                <th>Duration</th>
+                <th>Size</th>
+                <th>Client</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -56,6 +79,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['scatter']}]}"></script>
     <script src="time_size_chart.js"></script>
+    <script src="events_table.js"></script>
     <script src="renderer.js"></script>
     <script src="app.js"></script>
   </body>
