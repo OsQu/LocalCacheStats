@@ -39,7 +39,7 @@ function numberOfReports(host, json) {
 }
 
 function numberOfFiles(host, json) {
-  return db.sequelize.query('select avg(count) from (select count(distinct(file)) from events where host = ? and "createdAt" >= current_date group by device_id) as countOfFiles',
+  return db.sequelize.query('select avg(count) from (select count(file) from events where host = ? and "createdAt" >= current_date group by device_id) as countOfFiles',
     { replacements: [host], type: db.sequelize.QueryTypes.SELECT }
   ).then(function(response) {
     json[host]["average_file_count"] = response[0]["avg"];
