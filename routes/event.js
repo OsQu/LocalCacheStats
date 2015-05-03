@@ -27,6 +27,8 @@ module.exports = {
       })
     });
 
+    app.get("/event/aggregate", require("./event_aggregated"));
+
     app.post("/event", function(req, res) {
       createEvent(req.body).then(function(event) {
         res.status(201).json(event);
