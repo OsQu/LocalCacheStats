@@ -8,11 +8,9 @@
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css" />
 
   </head>
   <body>
-
     <div class="container" role="main">
       <div class="row">
         <div class="col-md-12">
@@ -41,8 +39,8 @@
       </div>
       <div class="row">
         <div class="col-md-2"><h4>Time and Filesize</h4></div>
-        <div class="col-md-5 text-center"><span id="hs-time-filesize"></span></div>
-        <div class="col-md-5 text-center"><span id="cache-time-filesize"></span></div>
+        <div class="col-md-5"><div id="hs-time-filesize"></div></div>
+        <div class="col-md-5"><div id="cache-time-filesize"></div></div>
       </div>
       <div class="row">
         <div class="col-md-2"><h4>Files</h4></div>
@@ -51,9 +49,13 @@
       </div>
     </div>
 
+    <div class="ct-chart ct-perfect-fourth"></div>
+
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"><script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['scatter']}]}"></script>
+    <script src="time_size_chart.js"></script>
     <script src="renderer.js"></script>
     <script src="app.js"></script>
   </body>
