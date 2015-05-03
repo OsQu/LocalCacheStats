@@ -15,8 +15,18 @@ function createEvent(params) {
   });
 }
 
+function listEvents() {
+  return db.event.findAll()
+}
+
 module.exports = {
   draw: function(app) {
+    app.get("/event", function(req, res) {
+      listEvents().then(function(events) {
+        res.status(200).json(events);
+      })
+    });
+
     app.post("/event", function(req, res) {
       createEvent(req.body).then(function(event) {
         res.status(201).json(event);
