@@ -1,11 +1,13 @@
 var winston = require("winston");
 var express = require('express');
+var cors = require('cors');
 var bodyParser = require("body-parser");
 
 var env = require("./app_env");
 
 var app = express();
 app.use(bodyParser.json());
+app.use(cors());
 app.use(function(req, res, next) {
   winston.info("Processing %s %s from %s", req.method, req.path, req.ip);
   winston.info("Parameters:", req.body);
