@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Cache Stats</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css" />
+
+  </head>
+  <body>
+
+    <div class="container" role="main">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center text-uppercase">Local cache stats</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 text-center"><h3>HS API</h3></div>
+        <div class="col-md-5 text-center"><h3>LOCAL CACHE</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"><h4>Avg. num of files</h4></div>
+        <div class="col-md-5 text-center"><span id="hs-avg-files"></span></div>
+        <div class="col-md-5 text-center"><span id="cache-avg-files"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"><h4>Avg. download time per file</h4></div>
+        <div class="col-md-5 text-center"><span id="hs-dl-time"></span></div>
+        <div class="col-md-5 text-center"><span id="cache-dl-time"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"><h4>Avg. download speed</h4></div>
+        <div class="col-md-5 text-center"><span id="hs-dl-speed"></span></div>
+        <div class="col-md-5 text-center"><span id="cache-dl-speed"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"><h4>Time and Filesize</h4></div>
+        <div class="col-md-5 text-center"><span id="hs-time-filesize"></span></div>
+        <div class="col-md-5 text-center"><span id="cache-time-filesize"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"><h4>Files</h4></div>
+        <div class="col-md-5 text-center"><span id="hs-files"></span></div>
+        <div class="col-md-5 text-center"><span id="cache-files"></span></div>
+      </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="renderer.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
