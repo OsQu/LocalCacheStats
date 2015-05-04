@@ -16,7 +16,7 @@ function createEvent(params) {
 }
 
 function listEvents() {
-  return db.event.findAll()
+  return db.event.findAll({where: '"createdAt" >= current_date' });
 }
 
 module.exports = {
